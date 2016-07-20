@@ -18,8 +18,20 @@ AWESOMENESS = [
 def start_here():
     """Homepage."""
 
-    return "Hi! This is the home page."
+    return render_template("home.html")
 
+
+@app.route('/home')
+def decision():
+    """Ask user if they would like to playgame or recieve a compliment"""
+    
+    answer = request.args.get("playgame_compliment")
+
+    if answer == "yes_to_game":
+
+        return render_template("game.html")
+    else: 
+        return render_template("compliment.html")
 
 @app.route('/hello')
 def say_hello():
